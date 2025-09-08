@@ -6,7 +6,7 @@
 # Before running, ensure you have astroquery installed:
 # pip install astroquery
 
-from astroquery.euclid import Euclid
+from astroquery.esa.euclid import Euclid
 
 def find_lensing_anomalies():
     """
@@ -20,20 +20,22 @@ def find_lensing_anomalies():
 
     # This ADQL query selects sources with high confidence and high shear values,
     # which could be candidates for our theory.
+    # Placeholder ADQL query - REPLACE WITH ACTUAL TABLE/COLUMN NAMES FROM EUCLID DOCS
     adql_query = """
     SELECT
-      source_id, ra, dec, shear_g1, shear_g2, snr
+      source_id, ra, dec, FLUX_VIS_nFWHM_APER, DET_QUALITY_FLAG
     FROM
-      euclid_dr1.lensing_catalog
+      euclid_q1.mer_catalogue
     WHERE
-      snr > 10 AND (ABS(shear_g1) > 0.5 OR ABS(shear_g2) > 0.5)
+      DET_QUALITY_FLAG = 0
     """
 
     print("Executing ADQL query...")
     print(f"Query: {adql_query}")
 
     try:
-        candidate_table = Euclid.query_system_main(adql_query)
+        job = Euclid.launch_job(adql_query)
+        candidate_table = job.get_results()
 
         if not candidate_table:
             print("Query executed successfully, but no candidate objects were found.")
