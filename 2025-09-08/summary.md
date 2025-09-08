@@ -23,3 +23,17 @@ The hypothesis suggests that several major mysteries in modern physics are not n
 2.  **Dark Energy:** Re-framed as the **collective pressure** of the vast Quantum Tier on our own, causing the observed accelerated expansion of our spacetime.
 
 3.  **Quantum Entanglement:** Re-framed as a direct observation of the Quantum Tier's nature. Entangled particles are not separated by vast distances in our space, but are **adjacent on the 3D time canvas**, allowing for instantaneous interaction that is not limited by the speed of light.
+
+---
+
+### Phase 2: Project Implementation (as of 2025-09-08)
+
+To operationalize the search for clues, the following project assets were created:
+
+1.  **`TASKS.md`**: A high-level checklist outlining the initial tasks for data collection and retrieval from key observatories.
+
+2.  **`ANALYSIS_PLAN.md`**: A detailed technical plan focusing on a remote-analysis strategy. This avoids the need for large local storage by using Python libraries (`astroquery`) and cloud platforms (the Rubin Science Platform) to query and filter data on the observatories' servers.
+
+3.  **`src/euclid_data_miner.py`**: A Python script to query the Euclid Science Archive for anomalous gravitational lensing data. This is designed to be run locally.
+
+4.  **`src/rubin_data_miner.py`**: A conceptual Python script template for querying the Vera C. Rubin Observatory's data. This is designed as a blueprint to be used within the Rubin Science Platform's proprietary notebook environment.
