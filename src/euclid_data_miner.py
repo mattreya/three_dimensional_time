@@ -2,7 +2,7 @@
 
 
 
-/# src/euclid_data_miner.py
+# src/euclid_data_miner.py
 #
 # This program queries the Euclid Science Archive for objects with anomalous
 # gravitational lensing properties, based on the 3D time hypothesis.
