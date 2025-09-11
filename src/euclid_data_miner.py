@@ -26,15 +26,14 @@ def find_lensing_anomalies():
     # which could be candidates for our theory.
     # Query tap_schema.columns to get column names for catalogue.mer_catalogue
     adql_query = """
-    SELECT
-      column_name, data_type, description
+    SELECT column_name, datatype, description
     FROM
       tap_schema.columns
     WHERE
-      table_name = 'catalogue.mer_catalogue'
+      table_name = 'catalogue.mer_final_catalogue'
     """
 
-    print("Executing ADQL query to get column names...")
+    print("Executing ADQL query to get columns for catalogue.mer_final_catalogue...")
     print(f"Query: {adql_query}")
 
     try:
@@ -42,12 +41,12 @@ def find_lensing_anomalies():
         columns_table = job.get_results()
 
         if not columns_table:
-            print("Could not retrieve column information for catalogue.mer_catalogue.")
+            print("Could not retrieve column information for catalogue.mer_final_catalogue.")
             return
 
-        print("Columns in catalogue.mer_catalogue:")
+        print("Columns in catalogue.mer_final_catalogue:")
         for row in columns_table:
-            print(f"- {row['column_name']} ({row['data_type']}): {row['description']}")
+            print(f"- {row['column_name']} ({row['datatype']}): {row['description']}")
 
     except Exception as e:
         print(f"An error occurred during the query: {e}")
