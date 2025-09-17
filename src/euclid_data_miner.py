@@ -30,21 +30,24 @@ def find_lensing_anomalies():
     FROM
       tap_schema.columns
     WHERE
-      table_name = 'catalogue.mer_final_catalogue'
+      table_name = 'catalogue.mer_catalogue'
     """
 
-    print("Executing ADQL query to get columns for catalogue.mer_final_catalogue...")
+    print("Executing ADQL query to get columns for catalogue.mer_catalogue...")
     print(f"Query: {adql_query}")
 
     try:
+        print("Launching ADQL job...")
         job = Euclid.launch_job(adql_query)
+        print("ADQL job launched. Waiting for results...")
         columns_table = job.get_results()
+        print("Results received.")
 
         if not columns_table:
             print("Could not retrieve column information for catalogue.mer_final_catalogue.")
             return
 
-        print("Columns in catalogue.mer_final_catalogue:")
+        print("Columns in catalogue.mer_catalogue:")
         for row in columns_table:
             print(f"- {row['column_name']} ({row['datatype']}): {row['description']}")
 
@@ -52,37 +55,42 @@ def find_lensing_anomalies():
         print(f"An error occurred during the query: {e}")
         print("This could be due to a connection issue, or the archive may not be available.")
         print("Please check your internet connection and the ESA/Euclid server status.")
+        return # Exit if column info cannot be retrieved
 
-    # Placeholder ADQL query - REPLACE WITH ACTUAL TABLE/COLUMN NAMES FROM EUCLID DOCS
-    # adql_query = """
-    # SELECT
-    #   source_id, ra, dec, FLUX_VIS_nFWHM_APER, DET_QUALITY_FLAG
-    # FROM
-    #   catalogue.mer_catalogue
-    # WHERE
-    #   DET_QUALITY_FLAG = 0
-    # """
+    # Now, execute the main ADQL query to find anomalous lensing candidates
+    adql_query = """
+    SELECT
+      object_id, right_ascension, declination, ellipticity, position_angle,
+      point_like_prob, det_quality_flag
+    FROM
+      catalogue.mer_catalogue
+    WHERE
+      det_quality_flag = 0
+    """
 
-    # print("Executing ADQL query...")
-    # print(f"Query: {adql_query}")
+    print("Executing ADQL query for anomalous lensing candidates...")
+    print(f"Query: {adql_query}")
 
-    # try:
-    #     job = Euclid.launch_job(adql_query)
-    #     candidate_table = job.get_results()
+    try:
+        print("Launching ADQL job for candidates...")
+        job = Euclid.launch_job(adql_query)
+        print("ADQL job launched. Waiting for candidate results...")
+        candidate_table = job.get_results()
+        print("Candidate results received.")
 
-    #     if not candidate_table:
-    #         print("Query executed successfully, but no candidate objects were found.")
-    #         return
+        if not candidate_table:
+            print("Query executed successfully, but no candidate objects were found with the specified criteria.")
+            return
 
-    #     # Save the results to a local file
-    #     output_file = "euclid_lensing_candidates.csv"
-    #     candidate_table.write(output_file, format="csv", overwrite=True)
-    #     print(f"Success! Found {len(candidate_table)} candidates. Saved to {output_file}")
+        # Save the results to a local file
+        output_file = "euclid_lensing_candidates.csv"
+        candidate_table.write(output_file, format="csv", overwrite=True)
+        print(f"Success! Found {len(candidate_table)} anomalous lensing candidates. Saved to {output_file}")
 
-    # except Exception as e:
-    #     print(f"An error occurred during the query: {e}")
-    #     print("This could be due to a connection issue, or the archive may not be available.")
-    #     print("Please check your internet connection and the ESA/Euclid server status.")
+    except Exception as e:
+        print(f"An error occurred during the candidate query: {e}")
+        print("This could be due to a connection issue, or the archive may not be available.")
+        print("Please check your internet connection and the ESA/Euclid server status.")
 
 if __name__ == "__main__":
     find_lensing_anomalies()

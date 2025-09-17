@@ -1,4 +1,4 @@
-astropy==7.1.0
+astropy==6.1.7
 astropy-iers-data==0.2025.9.8.0.36.17
 astroquery==0.4.10
 beautifulsoup4==4.13.5
@@ -14,7 +14,7 @@ jaraco.functools==4.3.0
 jeepney==0.9.0
 keyring==25.6.0
 more-itertools==10.8.0
-numpy==2.3.2
+numpy==2.2.6
 packaging==25.0
 pycparser==2.22
 pyerfa==2.0.1.5
