@@ -24,7 +24,7 @@ def process_candidates(file_path="euclid_lensing_candidates.csv"):
     print("\nDescriptive Statistics for numerical columns:")
     print(df.describe())
 
-    plots_dir = "euclid_plots"
+    plots_dir = "2025-11-17_analysis/euclid_plots"
     os.makedirs(plots_dir, exist_ok=True)
 
     print("\n--- Anomaly Detection: Ellipticity Outliers ---")
