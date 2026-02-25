@@ -45,6 +45,29 @@ We perform remote analysis of astronomical datasets, focusing on:
 │   └── euclid_data_miner.py      # ESA Euclid Archive query tool
 ```
 
+## Visualizing the 3D Time Lattice
+
+To better understand the concept of a 3D Time Lattice, we have developed a 3D visualization tool. 
+This tool allows you to interact with the lattice, explore the "Temporal Orthogonality" of galaxies, and visualize the lunar anchor effect.
+
+### 3D Time Lattice Demo
+A macro view of the 3D Time Lattice, showing the stream of time expanding into space.
+![3D Time Lattice Demo](./3d_time_lattice_demo_1771876559233.webp)
+
+### Interactive Scrub Slider
+The visualization includes an interactive slider to manually scrub through the 29.53-day lunar cycle and observe the phase alignments.
+![Interactive Slider](./3d_time_scrub_slider_v2_1771877135251.webp)
+
+### High-Resolution Snapshots
+Detailed snapshots of the Time Lattice, highlighting the field line projections and the Galaxy Data Legend.
+
+![Final Lattice Snapshot](./final_lattice_verification_1771879220149.png)
+![Lattice Snapshot](./lattice_after_low_level_drag_1771876647846.png)
+
+### Deep Zoom
+A deep zoom view revealing the continuous stream of the Time Lattice framed by stylized constellations.
+![Macro Deep Zoom](./3d_time_deep_zoom_1771877530410.webp)
+
 ## Getting Started
 
 1.  **Analyze Galaxy Orientations:**
@@ -58,6 +81,12 @@ We perform remote analysis of astronomical datasets, focusing on:
 3.  **Check for Lunar Resonance:**
     ```bash
     python src/lunar_phase_correlator.py
+    ```
+4.  **Run the 3D Visualization:**
+    ```bash
+    cd lattice_3d_viz
+    npm install
+    npm run dev
     ```
 
 ## Dependencies
