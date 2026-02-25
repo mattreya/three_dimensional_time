@@ -66,7 +66,7 @@ Detailed snapshots of the Time Lattice, highlighting the field line projections 
 
 ### Deep Zoom
 A deep zoom view revealing the continuous stream of the Time Lattice framed by stylized constellations.
-![Macro Deep Zoom](./3d_time_deep_zoom_1771877530410.webp)
+![Macro Deep Zoom](./3d_time_deep_zoom_fixed.png)
 
 ## Getting Started
 
