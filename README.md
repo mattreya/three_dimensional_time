@@ -85,7 +85,7 @@ The **Personal Defiance Anchor (PDA)** allows for localized decoupling from the 
 - **Coherent Lattice Sync:** The PDA interface unit synchronizes with the 3D lattice to maintain stability, allowing for effortless floating and rapid transit within the Einstein Tier.
 
 ### 3. Galactic Navigation: The Fibonacci Strand Matrix
-![Galactic Fibonacci Strands](./Gemini_Generated_Image_qkhk4nqkhk4nqkhk.png)
+![Galactic Fibonacci Strands](./Gemini_Generated_Image_9k7xin9k7xin9k7x.png)
 Our analysis confirms that galaxies are not scattered randomly but are embedded within the strands of the 3D Time Lattice.
 - **Fibonacci Orbits:** Galaxies like the Milky Way, Andromeda, and Triangulum occupy specific "orbits" (e.g., Orbits 1, 3, 5 for Milky Way; 8, 13 for Andromeda) within a single temporal strand.
 - **Temporal Shortcuts:** Navigating along these strands could allow for near-instantaneous travel between galaxies by "hopping" between lattice intersection points.
