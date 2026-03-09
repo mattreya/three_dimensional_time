@@ -13,12 +13,23 @@ def validate_mar3():
     print("--- 3D Time Lattice Validation for March 3rd, 2026 ---")
     
     # Run the data miner to generate the anomalies data
-    # (Since public repo fetch failed, we rely on the 3D Time hypothesis simulation)
-    print("Generating/Simulating CERN B-meson data...")
-    cern_data_miner.mine_cern_entanglement_data()
+    print("Fetching and Processing CERN B-meson data...")
+    # cern_data_miner is usually run by the fetcher. We'll just run the fetcher pipeline here
+    import subprocess
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    subprocess.run([sys.executable, os.path.join(script_dir, "cern_data_fetcher.py")])
     
-    # Load the generated data
-    df = pd.read_csv("cern_b_meson_anomalies.csv")
+    # Load the generated data, preferring the real data CSV
+    real_csv = os.path.join(script_dir, "cern_b_meson_anomalies_from_real_data.csv")
+    fallback_csv = os.path.join(script_dir, "cern_b_meson_anomalies.csv")
+    
+    if os.path.exists(real_csv):
+        df = pd.read_csv(real_csv)
+    elif os.path.exists(fallback_csv):
+        df = pd.read_csv(fallback_csv)
+    else:
+        print("Error: Could not find anomalies CSV file.")
+        return
     
     # March 3, 2026 is day 62 of the year
     mar3_target_day = 62 

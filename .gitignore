@@ -8,3 +8,7 @@
 __pycache__/
 *.pyc
 euclid_env/
+
+# Data and results
+data/
+src/*.csv
