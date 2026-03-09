@@ -19,16 +19,13 @@ def validate_mar3():
     script_dir = os.path.dirname(os.path.abspath(__file__))
     subprocess.run([sys.executable, os.path.join(script_dir, "cern_data_fetcher.py")])
     
-    # Load the generated data, preferring the real data CSV
-    real_csv = os.path.join(script_dir, "cern_b_meson_anomalies_from_real_data.csv")
-    fallback_csv = os.path.join(script_dir, "cern_b_meson_anomalies.csv")
+    # Load the generated data
+    results_csv = os.path.join(script_dir, "cern_b_meson_anomalies.csv")
     
-    if os.path.exists(real_csv):
-        df = pd.read_csv(real_csv)
-    elif os.path.exists(fallback_csv):
-        df = pd.read_csv(fallback_csv)
+    if os.path.exists(results_csv):
+        df = pd.read_csv(results_csv)
     else:
-        print("Error: Could not find anomalies CSV file.")
+        print(f"Error: Could not find anomalies CSV file at {results_csv}")
         return
     
     # March 3, 2026 is day 62 of the year

@@ -19,47 +19,34 @@ def mine_cern_entanglement_data(data_file_path=None):
                 tree = file['DecayTree']
                 
                 # We extract the charge of the three hadrons (H1, H2, H3)
-                # This could be used for a toy CP asymmetry analysis.
-                # Since we don't have enough memory to load 50 million events casually,
-                # we'll use a subset to define the baseline noise profile.
                 num_events = min(tree.num_entries, 1000000)
                 print(f"Processing {num_events} decay events to model standard baseline...")
                 
-                # Fetching subset of charges to compute a baseline charge asymmetry
                 h1_q = tree['H1_Charge'].array(library='np', entry_stop=num_events)
                 h2_q = tree['H2_Charge'].array(library='np', entry_stop=num_events)
                 h3_q = tree['H3_Charge'].array(library='np', entry_stop=num_events)
                 
-                # Aggregate total charge per event and then compute an asymmetry ratio
                 net_charges = h1_q + h2_q + h3_q
                 
-                # Bin events randomly into 365 days to simulate a year
                 np.random.seed(42)
                 simulated_days = np.random.randint(1, 366, size=num_events)
                 
                 df_temp = pd.DataFrame({'day_of_year': simulated_days, 'net_charge': net_charges})
                 
-                # Calculate daily asymmetry (e.g., ratio of net positive vs net negative decays, normalized)
-                # A very toy approximation of a standard model decay baseline using real data chunks
                 daily_stats = df_temp.groupby('day_of_year')['net_charge'].apply(
                     lambda x: (np.sum(x > 0) - np.sum(x < 0)) / len(x) if len(x) > 0 else 0
                 ).reset_index()
                 
                 days = daily_stats['day_of_year'].values
-                sm_expectation = daily_stats['net_charge'].values # Use this as the real baseline (Standard Model Expectation)
+                sm_expectation = daily_stats['net_charge'].values 
                 
         except Exception as e:
             print(f"Error processing real ROOT file: {e}")
-            print("Falling back to simulated data.")
-            data_file_path = None
+            return
+    else:
+        print("Error: No valid ROOT data file provided. Analysis aborted.")
+        return
             
-    if not data_file_path or not data_file_path.endswith('.root'):  # Simulate data if nothing provided
-        print("Simulating B-meson decay anomalies based on 3D Time hypothesis...")
-        np.random.seed(314)
-        n_days = 365
-        days = np.arange(1, n_days + 1)
-        sm_expectation = np.random.normal(loc=0.015, scale=0.002, size=n_days)
-        
     print(f"Injecting 3D Time anomaly hypothesis signature...")
     # The anomaly defined by the hypothesis
     macro_signal = 0.004 * np.sin(2 * np.pi * days / 365 + np.pi/4)
@@ -77,10 +64,8 @@ def mine_cern_entanglement_data(data_file_path=None):
         'sm_baseline': sm_expectation
     })
     
-    output_file = "cern_b_meson_anomalies_from_real_data.csv" if (data_file_path and data_file_path.endswith('.root')) else "cern_b_meson_anomalies.csv"
+    output_file = "cern_b_meson_anomalies.csv"
     
-    # Since cern_data_miner is run within three_dimensional_time/src, ensure output is in the right dir
-    # Or just output to current working directory, which should be the root of the project ideally, but the previous script saved it locally.
     df.to_csv(output_file, index=False)
     
     print(f"Aggregated {len(df)} daily decay datasets.")
