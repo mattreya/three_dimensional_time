@@ -48,6 +48,7 @@ def run_cern_data_pipeline():
     data_file = _download_latest_data()
     
     if data_file:
+        data_file = os.path.abspath(data_file)
         print(f"Proceeding to mine data at: {data_file}")
         print(f"Running {MINER_SCRIPT_PATH}...")
         try:
