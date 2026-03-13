@@ -22,6 +22,7 @@ def detect_temporal_boundaries():
     peaks, _ = find_peaks(df['temporal_flux'], height=0.002, distance=8)
     
     spike_days = df.iloc[peaks]['day_of_year'].values
+    print(f"Detected Peak Days: {spike_days}")
     spike_intervals = np.diff(spike_days)
     
     print(f"\n--- BOUNDARY CROSSING ANALYSIS ---")
