@@ -13,9 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import datetime
-from zoneinfo import ZoneInfo
-
 from google.adk.agents import Agent
 from google.adk.apps import App
 from google.adk.models import Gemini
@@ -30,47 +27,64 @@ os.environ["GOOGLE_CLOUD_LOCATION"] = "global"
 os.environ["GOOGLE_GENAI_USE_VERTEXAI"] = "True"
 
 
-def get_weather(query: str) -> str:
-    """Simulates a web search. Use it get information on weather.
+def fetch_anomaly_data(source: str) -> str:
+    """Fetches the latest anomaly data from the specified source.
 
     Args:
-        query: A string containing the location to get weather information for.
+        source: The name of the source to fetch data for. Valid options are "cern", "jwst", and "rubin".
 
     Returns:
-        A string with the simulated weather information for the queried location.
+        A string containing a sample of the anomaly data.
     """
-    if "sf" in query.lower() or "san francisco" in query.lower():
-        return "It's 60 degrees and foggy."
-    return "It's 90 degrees and sunny."
+    repo_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+    source = source.lower()
 
-
-def get_current_time(query: str) -> str:
-    """Simulates getting the current time for a city.
-
-    Args:
-        city: The name of the city to get the current time for.
-
-    Returns:
-        A string with the current time information.
-    """
-    if "sf" in query.lower() or "san francisco" in query.lower():
-        tz_identifier = "America/Los_Angeles"
+    filename = None
+    if "cern" in source:
+        filename = "cern_b_meson_anomalies.csv"
+    elif "jwst" in source:
+        filename = "jwst_early_universe_candidates.csv"
+    elif "rubin" in source:
+        filename = "rubin_time_domain_candidates.csv"
     else:
-        return f"Sorry, I don't have timezone information for query: {query}."
+        return f"Error: Unknown source '{source}'. Valid sources are 'cern', 'jwst', and 'rubin'."
 
-    tz = ZoneInfo(tz_identifier)
-    now = datetime.datetime.now(tz)
-    return f"The current time for query {query} is {now.strftime('%Y-%m-%d %H:%M:%S %Z%z')}"
+    filepath = os.path.join(repo_root, filename)
+    try:
+        with open(filepath, "r") as f:
+            # Return the first 10 lines as a sample to avoid overloading the context window
+            lines = []
+            for _ in range(10):
+                try:
+                    lines.append(next(f))
+                except StopIteration:
+                    break
+            return "".join(lines)
+    except Exception as e:
+        return f"Error reading data from {filename}: {str(e)}"
+
+
+def push_digest(digest: str) -> str:
+    """Executes the push tool autonomously to deploy the digest.
+
+    Args:
+        digest: The text digest formulated from the anomaly data.
+
+    Returns:
+        A success message indicating the push was successful.
+    """
+    print(f"Pushing digest:\n{digest}")
+    return "Digest pushed successfully!"
 
 
 root_agent = Agent(
     name="root_agent",
     model=Gemini(
-        model="gemini-flash-latest",
+        model="gemini-2.5-flash",
         retry_options=types.HttpRetryOptions(attempts=3),
     ),
-    instruction="You are a helpful AI assistant designed to provide accurate and useful information.",
-    tools=[get_weather, get_current_time],
+    instruction="You are an autonomous agent designed to fetch the latest anomaly data from CERN, JWST, and Vera C. Rubin, formulate a digest, and execute the push tool.",
+    tools=[fetch_anomaly_data, push_digest],
 )
 
 app = App(
