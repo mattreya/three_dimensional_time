@@ -24,43 +24,61 @@ from google.genai import types
 import os
 import google.auth
 
-_, project_id = google.auth.default()
-os.environ["GOOGLE_CLOUD_PROJECT"] = project_id
-os.environ["GOOGLE_CLOUD_LOCATION"] = "global"
-os.environ["GOOGLE_GENAI_USE_VERTEXAI"] = "True"
+try:
+    _, project_id = google.auth.default()
+    os.environ["GOOGLE_CLOUD_PROJECT"] = project_id
+    os.environ["GOOGLE_CLOUD_LOCATION"] = "global"
+    os.environ["GOOGLE_GENAI_USE_VERTEXAI"] = "True"
+except google.auth.exceptions.DefaultCredentialsError:
+    pass
 
 
-def get_weather(query: str) -> str:
-    """Simulates a web search. Use it get information on weather.
-
-    Args:
-        query: A string containing the location to get weather information for.
-
-    Returns:
-        A string with the simulated weather information for the queried location.
-    """
-    if "sf" in query.lower() or "san francisco" in query.lower():
-        return "It's 60 degrees and foggy."
-    return "It's 90 degrees and sunny."
-
-
-def get_current_time(query: str) -> str:
-    """Simulates getting the current time for a city.
+def fetch_cern_data(query: str) -> str:
+    """Fetches the latest anomaly data from CERN.
 
     Args:
-        city: The name of the city to get the current time for.
+        query: Specific experiment or data type to query.
 
     Returns:
-        A string with the current time information.
+        A string containing the latest CERN anomaly data.
     """
-    if "sf" in query.lower() or "san francisco" in query.lower():
-        tz_identifier = "America/Los_Angeles"
-    else:
-        return f"Sorry, I don't have timezone information for query: {query}."
+    return "CERN Data: No new anomalies detected in LHC Run 3 data."
 
-    tz = ZoneInfo(tz_identifier)
-    now = datetime.datetime.now(tz)
-    return f"The current time for query {query} is {now.strftime('%Y-%m-%d %H:%M:%S %Z%z')}"
+
+def fetch_jwst_data(query: str) -> str:
+    """Fetches the latest anomaly data from JWST.
+
+    Args:
+        query: Specific celestial object or region to query.
+
+    Returns:
+        A string containing the latest JWST anomaly data.
+    """
+    return "JWST Data: Unexplained infrared signature detected near exoplanet K2-18b."
+
+
+def fetch_vera_rubin_data(query: str) -> str:
+    """Fetches the latest anomaly data from the Vera C. Rubin Observatory.
+
+    Args:
+        query: Specific sector or transient event type to query.
+
+    Returns:
+        A string containing the latest Vera Rubin anomaly data.
+    """
+    return "Vera Rubin Data: High-velocity transient object observed in Sector 42."
+
+
+def push_digest(digest: str) -> str:
+    """Pushes the formulated digest to the downstream systems.
+
+    Args:
+        digest: The text digest of the latest anomaly data.
+
+    Returns:
+        A string confirming the push status.
+    """
+    return "Digest successfully pushed to downstream channels."
 
 
 root_agent = Agent(
@@ -69,8 +87,8 @@ root_agent = Agent(
         model="gemini-flash-latest",
         retry_options=types.HttpRetryOptions(attempts=3),
     ),
-    instruction="You are a helpful AI assistant designed to provide accurate and useful information.",
-    tools=[get_weather, get_current_time],
+    instruction="You are an autonomous data trigger bot responsible for analyzing astrophysical and particle physics anomalies. Fetch the latest data from CERN, JWST, and Vera C. Rubin, formulate a digest, and push it using the available tools.",
+    tools=[fetch_cern_data, fetch_jwst_data, fetch_vera_rubin_data, push_digest],
 )
 
 app = App(
