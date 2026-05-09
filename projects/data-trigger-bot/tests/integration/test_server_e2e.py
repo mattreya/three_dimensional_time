@@ -57,6 +57,8 @@ def start_server() -> subprocess.Popen[str]:
     ]
     env = os.environ.copy()
     env["INTEGRATION_TEST"] = "TRUE"
+    if "GEMINI_API_KEY" not in env:
+        env["GEMINI_API_KEY"] = "dummy"
     process = subprocess.Popen(
         command,
         stdout=subprocess.PIPE,
