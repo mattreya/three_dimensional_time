@@ -23,11 +23,18 @@ from google.genai import types
 
 import os
 import google.auth
+from google.auth.exceptions import DefaultCredentialsError
 
-_, project_id = google.auth.default()
-os.environ["GOOGLE_CLOUD_PROJECT"] = project_id
-os.environ["GOOGLE_CLOUD_LOCATION"] = "global"
-os.environ["GOOGLE_GENAI_USE_VERTEXAI"] = "True"
+try:
+    _, project_id = google.auth.default()
+    if project_id:
+        os.environ["GOOGLE_CLOUD_PROJECT"] = project_id
+    os.environ["GOOGLE_CLOUD_LOCATION"] = "global"
+    os.environ["GOOGLE_GENAI_USE_VERTEXAI"] = "True"
+except DefaultCredentialsError:
+    if "GEMINI_API_KEY" not in os.environ:
+        raise
+    # Fallback to GEMINI_API_KEY, no Vertex AI settings needed
 
 
 def get_weather(query: str) -> str:
