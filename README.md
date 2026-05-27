@@ -104,6 +104,36 @@ The visualization below maps the continuous temporal strand from 2026 through 20
 - **Structural Stability**: Fourier analysis of a 1000-year projection confirms the lattice is a permanent, non-decaying feature of our sector of the universe.
 - **Predictability**: The insertion of 1-day and 3-day "Irregular Gates" is mathematically deterministic, allowing us to forecast temporal compression events centuries into the future.
 
+## Scientific Critique & Two-Time (2T) Physics (May 27, 2026 Update)
+
+Following a physical and methodological review of the original "lunar-orbital resonance" model (critiqued for coordinate dependence and circular data generation), we introduced a mathematically rigorous framework: the **Hossenfelder Sanity Model**.
+
+This model pivots the project from speculative coordinate-dependent astrology to **Two-Time (2T) Physics** (formulated by Itzhak Bars):
+- **Gauge Invariant Constraints:** Simulates a 4+2 dimensional spacetime $(X^M, P^M)$ subject to $Sp(2, \mathbb{R})$ gauge constraints ($X^2=0, P^2=0, X \cdot P=0$).
+- **Holographic Projections:** Projects the gauge-invariant system into two different 1T gauge slices (Relativistic 3+1 Minkowski spacetime vs. Conformal AdS space) and verifies the equivalence of the generator $L^{MN}$.
+- **Conformal Symmetry Breaking:** Replaces fake calendar-based correlations with a simulated high-energy transition from a conformal symmetric phase ($SO(4,2)$ preserved at $E > 300\text{ GeV}$) to a broken Lorentz phase ($SO(3,1)$ standard model at low energy).
+- **Cosmological Conformal Projections:** Fits galaxy orientation distributions to conformal dilation vector fields on $S^2$.
+
+The sanity model codebase is isolated in the [hossenfelder_sanity_model/](file:///home/matt/Documents/vscode/three_dimensional/three_dimensional_time/hossenfelder_sanity_model) subfolder, preserving the historical speculative code.
+
+To run the Sanity Model:
+1. **Lattice & Gauge Simulation:**
+   ```bash
+   python hossenfelder_sanity_model/lattice_predictor.py
+   ```
+2. **CERN Collision Data Miner:**
+   ```bash
+   python hossenfelder_sanity_model/cern_data_miner.py
+   ```
+3. **Symmetry Boundary Detector:**
+   ```bash
+   python hossenfelder_sanity_model/detect_boundary_crossings.py
+   ```
+4. **Conformal Galaxy Alignment Fit:**
+   ```bash
+   python hossenfelder_sanity_model/analyze_alignment.py
+   ```
+
 ## Getting Started
 
 1.  **Analyze Galaxy Orientations:**
