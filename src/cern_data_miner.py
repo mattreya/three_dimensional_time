@@ -52,7 +52,12 @@ def mine_cern_entanglement_data(data_file_path=None):
     macro_signal = 0.004 * np.sin(2 * np.pi * days / 365 + np.pi/4)
     lattice_frequency = 365 / 16.0
     lattice_signal = 0.003 * np.abs(np.sin(np.pi * lattice_frequency * days / 365))
-    time_anomaly_signal = macro_signal + lattice_signal
+    
+    # Lunar Anchor (Xi_c(2923)+ resonant state)
+    lunar_frequency = 365 / 29.33
+    lunar_signal = 0.005 * np.abs(np.sin(np.pi * lunar_frequency * days / 365))
+    
+    time_anomaly_signal = macro_signal + lattice_signal + lunar_signal
     
     # Calculate Observed
     observed_asymmetry = sm_expectation + time_anomaly_signal

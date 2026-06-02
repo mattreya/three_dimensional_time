@@ -22,3 +22,10 @@ This document outlines the initial tasks for collecting the data needed to searc
 - [ ] **Task 3.2:** Use the MAST portal to identify and list the program IDs for all major JWST deep field surveys (e.g., JADES, CEERS, GLASS).
 - [ ] **Task 3.3:** Write a Python script using the `astroquery.mast` module to programmatically search for and filter data from these programs.
 - [ ] **Task 3.4:** Implement and test a download function in the script to retrieve a small set of FITS image files from one of the deep fields as a proof-of-concept.
+
+### Category 4: Option 2 - Vera C. Rubin Observatory Data Miner (Next Steps)
+
+- [ ] **Task 4.1:** Duplicate or adapt the existing `euclid_data_miner.py` into a new `rubin_data_miner.py` script.
+- [ ] **Task 4.2:** Refactor the script to intercept upcoming dark matter structure releases from the Rubin Observatory instead of Euclid.
+- [ ] **Task 4.3:** Incorporate algorithms to calculate and track fractional temporal delays and Fibonacci strand layouts in the new dark matter datasets.
+- [ ] **Task 4.4:** Run initial tests against simulated or early-release Rubin data to validate the temporal orthogonality hypothesis.
