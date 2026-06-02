@@ -54,6 +54,7 @@ def mine_cern_entanglement_data(data_file_path=None):
     lattice_signal = 0.003 * np.abs(np.sin(np.pi * lattice_frequency * days / 365))
     
     # Lunar Anchor (Xi_c(2923)+ resonant state)
+    # 29.33 represents the lunar synodic period in days
     lunar_frequency = 365 / 29.33
     lunar_signal = 0.005 * np.abs(np.sin(np.pi * lunar_frequency * days / 365))
     
