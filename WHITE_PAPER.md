@@ -13,14 +13,17 @@ However, persistent anomalies remain unexplained:
 1. **At the Quantum Scale**: The LHCb experiment at CERN continues to record rare B-meson decay tensions hovering at a 4-sigma level of significance, defying the Standard Model.
 2. **At the Cosmic Scale**: High-density dark matter distributions exhibit clustering patterns that cannot be fully explained by simple gravitational accretion.
 
-## 2. The Theoretical Framework: 2T-Physics and the Quantum Tier
-To solve these anomalies, we pivot away from 1D-time and anchor our hypothesis in **Two-Time (2T) Physics**, developed by theoretical physicist Itzhak Bars. 2T-Physics demonstrates that our observable 3+1 dimensional spacetime is merely a "shadow" or holographic projection of a highly symmetric higher-dimensional universe containing two dimensions of time and four dimensions of space (4+2 spacetime). 
+## 2. The Theoretical Framework: 2T-Physics, Superluminal Observers, and the Quantum Tier
+To solve these anomalies, we pivot away from 1D-time and anchor our hypothesis in **Two-Time (2T) Physics**, developed by theoretical physicist Itzhak Bars, as well as recent proposals in superluminal relativity. 2T-Physics demonstrates that our observable 3+1 dimensional spacetime is merely a "shadow" or holographic projection of a highly symmetric higher-dimensional universe containing two dimensions of time and four dimensions of space (4+2 spacetime). 
 
 By working in $d+2$ dimensions, hidden symmetries (such as $SO(d,2)$ symmetry) emerge. Position and momentum become indistinguishable at a fundamental level, acting as constraints that reduce the dimensions down to our observable 3+1 reality without introducing causality violations.
 
-We expand upon this framework by modeling the universe in **Two Tiers**:
-- **The Einstein Tier (Observable)**: The 1D-time projection bound by the speed of light and thermodynamics.
-- **The Quantum Tier (Structural)**: The underlying 3D temporal volume (incorporating the extra dimensions of time). Time is orthogonal, expanding not as a line, but as a lattice.
+### The 1+3 Superluminal Spacetime Framework
+Furthermore, our model draws critical support from the paper *"Relativity of superluminal observers in 1 + 3 spacetime"* (Dragan, Dębski, Charzyński, Turzyński, and Ekert; *Classical and Quantum Gravity*, 2022). This theoretical framework extends special relativity to include faster-than-light (superluminal) observers. Their mathematical models reveal that from the perspective of a superluminal reference frame, spacetime effectively "flips" its character, presenting as a framework with **three dimensions of time and one dimension of space**. By taking superluminal branches of the mathematics seriously, quantum indeterminacy and multiple-path propagation become direct consequences of relativity rather than separate postulates.
+
+We expand upon these frameworks by modeling the universe in **Two Tiers**:
+- **The Einstein Tier (Observable)**: The 1D-time projection bound by the speed of light and thermodynamics (subluminal).
+- **The Quantum Tier (Structural)**: The underlying 3D temporal volume (incorporating the extra dimensions of time seen from superluminal/higher-dimensional frames). Time is orthogonal, expanding not as a line, but as a lattice.
 
 ## 3. Quantum-Scale Evidence: The CERN LHCb Anomalies
 To test if particles interact with this temporal lattice, we simulated the extraction of B-meson decay data. Recent observations identified new multi-body resonant states, specifically $\Xi_c(2923)^+$. 

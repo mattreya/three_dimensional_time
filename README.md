@@ -6,9 +6,9 @@ This project is a speculative research effort to find evidence for the hypothesi
 
 Our working theory posits a "Two-Tier" model of the universe:
 
-1.  **The Einstein Tier (1-3% of Reality):** The observable universe we live in, governed by the 2nd Law of Thermodynamics and Einstein's relativity.
+1.  **The Einstein Tier (1-3% of Reality):** The observable universe we live in, governed by the 2nd Law of Thermodynamics and Einstein's relativity (the subluminal frame).
 
-2.  **The Quantum Tier (97-99% of Reality):** A deeper, underlying reality operating on a 3D time canvas. This tier allows for non-local events, entropy reversals, and is not bound by the speed of light.
+2.  **The Quantum Tier (97-99% of Reality):** A deeper, underlying reality operating on a 3D time canvas. This tier allows for non-local events, entropy reversals, and is not bound by the speed of light. This aligns with the mathematical framework proposed in *"Relativity of superluminal observers in 1 + 3 spacetime"* (Dragan et al., 2022), which shows that from a superluminal reference frame, reality exhibits three dimensions of time and one dimension of space.
 
 ## Current Progress & Breakthroughs (Feb 20, 2026)
 
