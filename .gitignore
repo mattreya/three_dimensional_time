@@ -12,3 +12,6 @@ euclid_env/
 # Data and results
 data/
 src/*.csv
+
+# Agent session databases
+**/.adk/
