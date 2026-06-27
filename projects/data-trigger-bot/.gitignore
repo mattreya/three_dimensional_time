@@ -147,6 +147,7 @@ dmypy.json
 
 
 tmp*
+.agents-cli-scripts/
 
 # Node
 **/node_modules
@@ -185,6 +186,9 @@ testem.log
 Thumbs.db
 *.vscode*
 
+# ADK
+.adk/
+
 # Agent CLI specific
 .persist_vector_store
 tests/load_test/.results/*.html
@@ -193,7 +197,6 @@ tests/load_test/.results/*.csv
 my_env.tfvars
 .saved_chats
 .env
-.requirements.txt
 .google-agents-cli/
 
 # A2A Inspector
