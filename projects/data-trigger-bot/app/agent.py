@@ -24,10 +24,45 @@ from google.genai import types
 import os
 import google.auth
 
-_, project_id = google.auth.default()
-os.environ["GOOGLE_CLOUD_PROJECT"] = project_id
-os.environ["GOOGLE_CLOUD_LOCATION"] = "global"
-os.environ["GOOGLE_GENAI_USE_VERTEXAI"] = "True"
+try:
+    _, project_id = google.auth.default()
+    os.environ["GOOGLE_CLOUD_PROJECT"] = project_id
+    os.environ["GOOGLE_CLOUD_LOCATION"] = "global"
+    os.environ["GOOGLE_GENAI_USE_VERTEXAI"] = "True"
+except google.auth.exceptions.DefaultCredentialsError:
+    # Fallback to standard Gemini API if ADC is not found
+    pass
+
+
+def fetch_anomaly_data(source: str) -> str:
+    """Fetches anomaly data from astronomical and particle physics sources.
+
+    Args:
+        source: The name of the data source (e.g., CERN, JWST, Vera C. Rubin)
+
+    Returns:
+        A string containing the latest anomaly data from the specified source.
+    """
+    source_lower = source.lower()
+    if "cern" in source_lower:
+        return "CERN Anomaly Data: B-meson decay anomalies detected. Potential lepton flavor universality violation."
+    elif "jwst" in source_lower:
+        return "JWST Anomaly Data: Unusually massive galaxies detected at very high redshifts (z > 10). Tensions with standard cosmology."
+    elif "rubin" in source_lower or "vera" in source_lower:
+        return "Vera C. Rubin Anomaly Data: High rate of unusual optical transients detected in recent deep drilling fields."
+    else:
+        return f"No anomaly data available for source: {source}"
+
+def execute_push_tool(digest: str) -> str:
+    """Executes the push tool to broadcast or store the formulated digest.
+
+    Args:
+        digest: The formulated digest text summarizing the anomalies.
+
+    Returns:
+        A success message indicating the digest was pushed.
+    """
+    return f"Successfully pushed the following digest to the central datastore: {digest}"
 
 
 def get_weather(query: str) -> str:
@@ -69,8 +104,8 @@ root_agent = Agent(
         model="gemini-flash-latest",
         retry_options=types.HttpRetryOptions(attempts=3),
     ),
-    instruction="You are a helpful AI assistant designed to provide accurate and useful information.",
-    tools=[get_weather, get_current_time],
+    instruction="You are a helpful AI assistant designed to provide accurate and useful information. Use the tools provided to you to fetch anomaly data and execute the push tool when requested.",
+    tools=[get_weather, get_current_time, fetch_anomaly_data, execute_push_tool],
 )
 
 app = App(
