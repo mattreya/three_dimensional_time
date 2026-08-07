@@ -22,10 +22,19 @@ from google.cloud import logging as google_cloud_logging
 from app.app_utils.telemetry import setup_telemetry
 from app.app_utils.typing import Feedback
 
+import logging
+from google.auth.exceptions import DefaultCredentialsError
+
 setup_telemetry()
-_, project_id = google.auth.default()
-logging_client = google_cloud_logging.Client()
-logger = logging_client.logger(__name__)
+try:
+    _, project_id = google.auth.default()
+    logging_client = google_cloud_logging.Client()
+    logger = logging_client.logger(__name__)
+except DefaultCredentialsError:
+    if "GEMINI_API_KEY" in os.environ:
+        logger = logging.getLogger(__name__)
+    else:
+        raise
 allow_origins = (
     os.getenv("ALLOW_ORIGINS", "").split(",") if os.getenv("ALLOW_ORIGINS") else None
 )
@@ -45,7 +54,7 @@ app: FastAPI = get_fast_api_app(
     artifact_service_uri=artifact_service_uri,
     allow_origins=allow_origins,
     session_service_uri=session_service_uri,
-    otel_to_cloud=True,
+    otel_to_cloud=False if os.environ.get("GEMINI_API_KEY") else True,
 )
 app.title = "projects/data-trigger-bot"
 app.description = "API for interacting with the Agent projects/data-trigger-bot"
@@ -61,7 +70,10 @@ def collect_feedback(feedback: Feedback) -> dict[str, str]:
     Returns:
         Success message
     """
-    logger.log_struct(feedback.model_dump(), severity="INFO")
+    if hasattr(logger, "log_struct"):
+        logger.log_struct(feedback.model_dump(), severity="INFO")
+    else:
+        logger.info(str(feedback.model_dump()))
     return {"status": "success"}
 
 
