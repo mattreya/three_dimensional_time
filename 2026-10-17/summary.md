@@ -14,7 +14,7 @@ Specifically, we formalized and tested the operator's hypothesis:
 1. **Wavefunction Collapse as Dimensional Reduction (3D Time $\to$ 1D Time Binary Eigenvalues):**
    * Prior to measurement, a quantum state evolves across a 3-dimensional temporal volume $(t_1, t_2, t_3)$ (Dragan & Ekert's $1+3$ superluminal dual frame) embedded in Itzhak Bars' $(4+2)$ $Sp(2, \mathbb{R})$ phase space $(X^M, P^M)$.
    * When a subsystem $A$ interacts with a macroscopic measurement apparatus confined to our $(3+1)$ Minkowski slice, **gauge-fixing** projects the state onto a single 1D causal timeline $t_1$ ($t_2 = t_3 = 0$).
-   * Because a 1D timeline possesses only two causal/helicity orientations along a measurement axis $\hat{n}$, the continuous quantum state is forced into a discrete **binary eigenvalue** $\lambda_A \in \{+1, -1\}$ via the projection operator $P_\pm = \frac{1}{2}(I \pm \hat{n}\cdot\vec{\sigma})$.
+   * Because a 1D timeline possesses only two causal/helicity orientations along a measurement axis $\hat{n}$, the continuous quantum state is forced into a discrete **binary eigenvalue** $\lambda_A \in \lbrace +1, -1 \rbrace$ via the projection operator $P_\pm = \frac{1}{2}(I \pm \hat{n}\cdot\vec{\sigma})$.
 
 2. **Spacelike Disconnection in $(3+1)$ vs. Contiguity in Extra Time $(t_2, t_3)$:**
    * Two entangled subsystems $B$ and $C$ separated by $|\Delta \vec{x}| > c \Delta t_1$ are **spacelike disconnected** in our classical $(3+1)$ world ($\Delta s_{3+1}^2 = c^2 \Delta t_1^2 - |\Delta \vec{x}|^2 < 0$).
@@ -31,7 +31,7 @@ Specifically, we formalized and tested the operator's hypothesis:
 ### 3. Empirical Verification on 5.13M CERN LHCb Events (`src/quantum_to_classical_3d_time_sim.py`)
 
 We tested this mechanism on all **$373,696$ signal $B^\pm \to h_1^\pm h_2^+ h_3^-$ 3-body decays** isolated from `B2HHH_MagnetDown.root`:
-* **Binary Helicity Collapse of $(h_1, h_2)$:** In the low-$s_{12}$ resonant region ($s_{12} < 3.0\text{ GeV}^2$), the helicity cosine $\cos\theta_{\text{hel}}$ bifurcates sharply into two binary lobes at $\cos\theta_{\text{hel}} \to +1$ ($64.82\%$) and $\cos\theta_{\text{hel}} \to -1$ ($35.18\%$).
+* **Binary Helicity Collapse of $(h_1, h_2)$:** In the low-$s_{12}$ resonant region ($s_{12} < 3.0\text{ GeV}^2$), the helicity cosine $\cos\theta_{\text{hel}}$ bifurcates sharply into two binary lobes at $\cos\theta_{\text{hel}} \to +1$ (64.82%) and $\cos\theta_{\text{hel}} \to -1$ (35.18%).
 * **Non-Local Phase Imprint on the 3rd Hadron ($h_3$):** Conditioning the third hadron's invariant mass spectrum $s_{23}$ on the collapsed binary state of $(h_1, h_2)$ reveals a complete phase-space inversion across the Dalitz plot.
 * **Multi-Body Quantum Mutual Information Excess:**
   * Uncorrelated Classical Phase-Space Baseline: $I_{\text{classical}}(s_{12}; s_{23}) = \mathbf{0.0885\text{ bits}}$

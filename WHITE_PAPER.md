@@ -69,8 +69,8 @@ The signal was partitioned into 4 Dalitz quadrants and evaluated along laborator
 The strong transverse X asymmetry is the known physical signature of the LHCb dipole magnet polarity (**Magnet Down**), which bends charged tracks horizontally. Along the unbent vertical ($P_y$) and longitudinal ($P_z$) axes, directional differentials are fully consistent with zero ($< 2\sigma$).
 
 ### 3.3 Derived Bound on Chiral Multi-Temporal Scale $\Lambda$
-Bounding the maximum observed differential across all bins yields:
-$$ \Lambda \ge \frac{2 \cdot v_{\text{EW}} \cdot \langle \gamma_B \rangle}{|\Delta A_{\text{CP}}|_{\text{max}}^{95\%}} = \frac{2 \cdot (246.22\text{ GeV}) \cdot 25.16}{0.1363} \approx \mathbf{90.88\text{ TeV}} \quad (\text{at } 95\%\text{ CL}) $$
+Bounding the maximum observed differential across all bins (at 95% CL) yields:
+$$ \Lambda \ge \frac{2 \cdot v_{\text{EW}} \cdot \langle \gamma_B \rangle}{|\Delta A_{\text{CP}}|_{\text{max, 95 CL}}} = \frac{2 \cdot (246.22\text{ GeV}) \cdot 25.16}{0.1363} \approx \mathbf{90.88\text{ TeV}} $$
 
 ---
 
@@ -86,14 +86,14 @@ Using [`src/corrected_multiscale_analysis.py`](file:///home/matt/Documents/vscod
 Using [`src/quantum_to_classical_3d_time_sim.py`](file:///home/matt/Documents/vscode/three_dimensional/three_dimensional_time/src/quantum_to_classical_3d_time_sim.py), we invert the analytical lens to examine how a 3D-temporal quantum state projects into our $(3+1)$ classical world:
 
 1. **Binary Collapse via Temporal Dimensional Reduction:**
-   In Dragan & Ekert's $(1+3)$ superluminal dual frame embedded in Bars' $(4+2)$ phase space, an unmeasured quantum system evolves across three temporal coordinates $(t_1, t_2, t_3)$. Interaction with a classical $(3+1)$ apparatus gauge-fixes $t_2 = t_3 = 0$ on the measured subsystem $A$, projecting it onto a 1D causal timeline $t_1$ with strictly **binary eigenvalues** $\lambda_A \in \{+1, -1\}$ via $P_\pm^{(A)} = \frac{1}{2}(I_A \pm \hat{n}\cdot\vec{\sigma}_A)$.
+   In Dragan & Ekert's $(1+3)$ superluminal dual frame embedded in Bars' $(4+2)$ phase space, an unmeasured quantum system evolves across three temporal coordinates $(t_1, t_2, t_3)$. Interaction with a classical $(3+1)$ apparatus gauge-fixes $t_2 = t_3 = 0$ on the measured subsystem $A$, projecting it onto a 1D causal timeline $t_1$ with strictly **binary eigenvalues** $\lambda_A \in \lbrace +1, -1 \rbrace$ via $P_\pm^{(A)} = \frac{1}{2}(I_A \pm \hat{n}\cdot\vec{\sigma}_A)$.
 2. **Extra-Temporal Null Bridge for Spacelike Disconnected Elements:**
    While subsystems $B$ and $C$ are spacelike disconnected in $(3+1)$ spacetime ($\Delta s_{3+1}^2 = c^2\Delta t_1^2 - |\Delta \vec{x}|^2 < 0$), the bulk null condition $\Delta s_{\text{bulk}}^2 = 0$ is satisfied through the orthogonal temporal plane:
    $$c^2\left(\Delta t_2^2 + \Delta t_3^2\right) = |\Delta \vec{x}|^2 - c^2 \Delta t_1^2 > 0$$
 3. **$6+9$ Partition of the 15 $SO(4,2)$ Bulk Generators:**
    Measurement gauge-fixes the **6 classical Lorentz generators** $L^{\mu\nu} \in SO(3,1)$, while the **9 extra-temporal bulk generators** ($L^{\mu 4}, L^{\mu 5}, L^{45}$) remain unbroken, transporting non-local quantum mutual information beyond $(3+1)$ spacetime without violating the $1/r^2$ law or the $\Lambda \ge 90.88\text{ TeV}$ classical causality bound.
 4. **Empirical Verification in 3-Body LHCb Decays ($373,696$ Signal Events):**
-   In $B^\pm \to h_1^\pm h_2^+ h_3^-$, when the resonant pair $(h_1, h_2)$ collapses into binary helicity states $\text{sign}(\cos\theta_{\text{hel}}) \in \{+1, -1\}$ ($64.82\%$ vs. $35.18\%$), the third hadron $h_3$ exhibits a strong conditional phase shift across $s_{23}$, yielding a multi-body quantum mutual information of $I_{\text{quantum}}(s_{12}; s_{23}) = \mathbf{0.4027\text{ bits}}$ compared to the uncorrelated classical kinematic baseline of $\mathbf{0.0885\text{ bits}}$ (a **$+0.3142\text{ bit}$ / $4.55\times$ quantum entanglement excess**).
+   In $B^\pm \to h_1^\pm h_2^+ h_3^-$, when the resonant pair $(h_1, h_2)$ collapses into binary helicity states $\text{sign}(\cos\theta_{\text{hel}}) \in \lbrace +1, -1 \rbrace$ (64.82% vs. 35.18%), the third hadron $h_3$ exhibits a strong conditional phase shift across $s_{23}$, yielding a multi-body quantum mutual information of $I_{\text{quantum}}(s_{12}; s_{23}) = \mathbf{0.4027\text{ bits}}$ compared to the uncorrelated classical kinematic baseline of $\mathbf{0.0885\text{ bits}}$ (a **$+0.3142\text{ bit}$ / $4.55\times$ quantum entanglement excess**).
 
 ![Quantum-to-Classical 3D Time Architecture](2026-10-17/quantum_to_classical_3d_time_architecture.png)
 

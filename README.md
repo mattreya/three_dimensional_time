@@ -51,9 +51,9 @@ $$ ds_{1+3}^2 = c^2\left(dt_1^2 + dt_2^2 + dt_3^2\right) - |d\vec{x}|^2 $$
 
 <a id="formula-2-the-binary-coin-flip-collapse"></a>
 ### Formula 2: The Binary Coin-Flip Collapse ($(t_1, t_2, t_3) \to t_1$)
-When a quantum subsystem $A$ interacts with a classical $(3+1)$ measurement apparatus, gauge-fixing forces $t_2^A = t_3^A = 0$. Projecting from 3D time onto our 1D timeline $t_1$ along measurement axis $\hat{n}$ yields strictly **binary eigenvalues** $\lambda_A \in \{+1, -1\}$:
+When a quantum subsystem $A$ interacts with a classical $(3+1)$ measurement apparatus, gauge-fixing forces $t_2^A = t_3^A = 0$. Projecting from 3D time onto our 1D timeline $t_1$ along measurement axis $\hat{n}$ yields strictly **binary eigenvalues** $\lambda_A \in \lbrace +1, -1 \rbrace$:
 
-$$ P_{\pm}^{(A)} = \frac{1}{2}\left(I_A \pm \hat{n} \cdot \vec{\sigma}_A\right) \otimes I_{BC} \implies \lambda_A \in \{+1, -1\} $$
+$$ P_{\pm}^{(A)} = \frac{1}{2}\left(I_A \pm \hat{n} \cdot \vec{\sigma}_A\right) \otimes I_{BC} \implies \lambda_A \in \lbrace +1, -1 \rbrace $$
 
 <a id="formula-3-the-secret-extra-time-bridge"></a>
 ### Formula 3: The Secret Extra-Time Bridge (Null Connection Across Space)
@@ -65,15 +65,15 @@ $$ \Delta s_{\text{bulk}}^2 = c^2\left(\Delta t_1^2 + \Delta t_2^2 + \Delta t_3^
 ### Formula 4: The $6 + 9$ Gear Split & Quantum Mutual Information
 The 15 antisymmetric gauge-invariant bulk generators $L^{MN} = X^M P^N - X^N P^M$ split into **6 classical $(3+1)$ Lorentz gears** ($L^{\mu\nu}$) and **9 extra-temporal quantum gears** ($L^{\mu 4}, L^{\mu 5}, L^{45}$). After element $A$ collapses into a binary state, the 9 extra-temporal gears preserve non-local quantum mutual information between $B$ and $C$:
 
-$$ L^{MN} = \underbrace{L^{\mu\nu}}_{\text{6 Classical Gears (Locked)}} \oplus \underbrace{\left\{L^{\mu 4}, L^{\mu 5}, L^{45}\right\}}_{\text{9 Extra-Time Quantum Gears (Unbroken)}} $$
+$$ L^{MN} = \underbrace{L^{\mu\nu}}_{\text{6 Classical Gears (Locked)}} \oplus \underbrace{\left\lbrace L^{\mu 4}, L^{\mu 5}, L^{45}\right\rbrace}_{\text{9 Extra-Time Quantum Gears (Unbroken)}} $$
 
 $$ I(B : C \mid A_{\text{binary}}) = S(\rho_{B|A}) + S(\rho_{C|A}) - S(\rho_{BC|A}) > 0 $$
 
 <a id="formula-5-the-9088-tev-classical-shield"></a>
 ### Formula 5: The $90.88\text{ TeV}$ Classical Shield (Heavy-Flavor SME Bound)
-Because the collapsed binary state has a symmetric marginal probability, extra-temporal entanglement does not break classical Lorentz invariance in $(3+1)$ spacetime. Coupling a multi-temporal background field $\Phi(x)$ via $\mathcal{L}_{\text{chiral}} = \frac{1}{\Lambda}(\partial_\mu \Phi)\bar{q}\gamma^\mu\gamma^5 q$ across $5.13\text{M}$ LHCb events bounds the classical symmetry-breaking scale at:
+Because the collapsed binary state has a symmetric marginal probability, extra-temporal entanglement does not break classical Lorentz invariance in $(3+1)$ spacetime. Coupling a multi-temporal background field $\Phi(x)$ via $\mathcal{L}_{\text{chiral}} = \frac{1}{\Lambda}(\partial_\mu \Phi)\bar{q}\gamma^\mu\gamma^5 q$ across $5.13\text{M}$ LHCb events bounds the classical symmetry-breaking scale (at 95% CL) at:
 
-$$ \Lambda \ge \frac{2 \cdot v_{\text{EW}} \cdot \langle \gamma_B \rangle}{|\Delta A_{\text{CP}}|_{\text{max}}^{95\%}} = \frac{2 \cdot (246.22\text{ GeV}) \cdot 25.16}{0.1363} \approx \mathbf{90.88\text{ TeV}} \quad (\text{at } 95\%\text{ CL}) $$
+$$ \Lambda \ge \frac{2 \cdot v_{\text{EW}} \cdot \langle \gamma_B \rangle}{|\Delta A_{\text{CP}}|_{\text{max, 95 CL}}} = \frac{2 \cdot (246.22\text{ GeV}) \cdot 25.16}{0.1363} \approx \mathbf{90.88\text{ TeV}} $$
 
 ---
 
@@ -92,7 +92,7 @@ $$ \Lambda \ge \frac{2 \cdot v_{\text{EW}} \cdot \langle \gamma_B \rangle}{|\Del
 
 <a id="chart-2-real-cern-particle-crash-proof"></a>
 ### Chart 2: Real CERN Particle Crash Proof — $373,696$ $B^\pm \to h_1 h_2 h_3$ Decays
-* **Panel 1 (Left):** When the first two particles $(h_1, h_2)$ collapse, they pile up at the two extreme binary edges: **$+1$ (Red, $64.8\%$)** and **$-1$ (Blue, $35.2\%$)**.
+* **Panel 1 (Left):** When the first two particles $(h_1, h_2)$ collapse, they pile up at the two extreme binary edges: **$+1$ (Red, 64.8%)** and **$-1$ (Blue, 35.2%)**.
 * **Panel 2 (Center):** Depending on whether the first pair landed on $+1$ (Red) or $-1$ (Blue), the third particle $h_3$ completely flips its energy pattern (purple shaded area)—proving the quantum information was carried across the decay!
 * **Panel 3 (Right):** Real CERN quantum collisions share **$0.4027\text{ bits}$** of mutual information compared to just **$0.0885\text{ bits}$** for uncorrelated classical particles—a **$+0.3142\text{ bit}$ ($4.55\times$) quantum entanglement excess**.
 
